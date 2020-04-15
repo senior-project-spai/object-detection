@@ -29,6 +29,8 @@ def main():
         # detect object in image
         detected_image, detections = object_detection.detect(image_stream)
 
+        print(detections)
+
 
 if __name__ == '__main__':
     main()
