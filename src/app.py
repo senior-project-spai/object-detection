@@ -5,7 +5,7 @@ import json
 import s3
 import object_detection
 from config import KAFKA_HOST, KAFKA_PORT, KAFKA_TOPIC_OBJECT_IMAGE
-
+print("Import complete")
 
 def main():
 
