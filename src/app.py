@@ -8,6 +8,8 @@ from config import KAFKA_HOST, KAFKA_PORT, KAFKA_TOPIC_OBJECT_IMAGE
 
 
 def main():
+    
+    print("Setup Kafka Client")
     # Setup Kafka Consumer
     consumer = KafkaConsumer(KAFKA_TOPIC_OBJECT_IMAGE,
                              bootstrap_servers='{}:{}'.format(
@@ -23,7 +25,7 @@ def main():
 
     for message in consumer:
         print("Consume Message")
-        
+
         # de-serialize
         message_json = json.loads(message.value.decode('utf-8'))
         print("message_json", message_json)
