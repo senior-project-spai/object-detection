@@ -22,6 +22,8 @@ def main():
     print("# Ready for consuming #")
 
     for message in consumer:
+        print("Consume Message")
+        
         # de-serialize
         message_json = json.loads(message.value.decode('utf-8'))
         print("message_json", message_json)
