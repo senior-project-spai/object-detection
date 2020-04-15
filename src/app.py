@@ -19,14 +19,18 @@ def main():
     producer = KafkaProducer(
         bootstrap_servers='{}:{}'.format(KAFKA_HOST, KAFKA_PORT))
 
+    print("# Ready for consuming #")
+
     for message in consumer:
         # de-serialize
         message_json = json.loads(message.value.decode('utf-8'))
+        print("message_json", message_json)
 
         # Get image from S3
         image_stream = s3.get_file_stream(message_json['object_image_path'])
 
         # detect object in image
+        print("detecting...")
         detected_image, detections = object_detection.detect(image_stream)
 
         print(detections)
