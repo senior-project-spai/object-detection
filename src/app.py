@@ -8,7 +8,7 @@ from config import KAFKA_HOST, KAFKA_PORT, KAFKA_TOPIC_OBJECT_IMAGE
 
 
 def main():
-    
+
     print("Setup Kafka Client")
     # Setup Kafka Consumer
     consumer = KafkaConsumer(KAFKA_TOPIC_OBJECT_IMAGE,
@@ -40,5 +40,5 @@ def main():
         print(detections)
 
 
-if __name__ == '__main__':
-    main()
+# Force to run main()
+main()
