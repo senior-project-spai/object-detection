@@ -44,8 +44,8 @@ def main():
         }
 
         # Send message
-        producer.send(KAFKA_TOPIC_OBJECT_RESULT,
-                      value=json.dumps(result).encode('utf-8'))
+        # producer.send(KAFKA_TOPIC_OBJECT_RESULT,
+        #               value=json.dumps(result).encode('utf-8'))
         logging.info("Output message: %s", result)
 
 
