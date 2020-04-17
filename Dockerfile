@@ -19,4 +19,4 @@ ADD https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/yolo.h5 .
 
 COPY src/ .
 
-CMD ["python3", "-u", "./app.py"]
+CMD ["python3", "./app.py"]

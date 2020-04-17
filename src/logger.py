@@ -1,11 +1,11 @@
 import logging
+import sys
 
 # Create __main__ logger
-logger = logging.getLogger("__main__")
+logger = logging.getLogger("app")
 
 # Create handler
 handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
 
 # Create formatter
 formatter = logging.Formatter('%(asctime)s - %(message)s')
@@ -13,4 +13,4 @@ handler.setFormatter(formatter)
 
 # Add handler to logger
 logger.addHandler(handler)
-
+logger.setLevel(logging.INFO)
