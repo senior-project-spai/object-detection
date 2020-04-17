@@ -1,5 +1,6 @@
-from kafka import KafkaConsumer, KafkaProducer
 import json
+from kafka import KafkaConsumer, KafkaProducer
+import numpy as np 
 
 # local module
 import s3
