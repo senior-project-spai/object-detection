@@ -8,7 +8,7 @@ logger = logging.getLogger("app")
 handler = logging.StreamHandler()
 
 # Create formatter
-formatter = logging.Formatter('%(asctime)s - %(message)s')
+formatter = logging.Formatter('[%(asctime)s] - %(message)s')
 handler.setFormatter(formatter)
 
 # Add handler to logger
