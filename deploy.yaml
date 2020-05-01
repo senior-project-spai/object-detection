@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: object-detection
+  name: object-detection
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: object-detection
+  template:
+    metadata:
+      labels:
+        app: object-detection
+    spec:
+      containers:
+        - env:
+            - name: KAFKA_TOPIC_OBJECT_IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  key: KAFKA_TOPIC_OBJECT_IMAGE_INPUT
+                  name: kafka-topic
+            - name: KAFKA_TOPIC_OBJECT_RESULT
+              valueFrom:
+                configMapKeyRef:
+                  key: KAFKA_TOPIC_OBJECT_RESULT
+                  name: kafka-topic
+          envFrom:
+            - configMapRef:
+                name: kafka-endpoint
+            - configMapRef:
+                name: s3-endpoint
+            - configMapRef:
+                name: s3-key
+          image: supakornbabe/spai-object-detection:dev-cc112a3
+          imagePullPolicy: Always
+          name: object-detection
+          ports:
+            - containerPort: 6006
+              protocol: TCP
+            - containerPort: 8888
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
